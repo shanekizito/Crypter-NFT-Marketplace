@@ -14,7 +14,7 @@ interface ButtonProps extends JSXButtonProps {
 
 const StyledButton = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const { variant, size, rounded, outlined, icon, className, ...other } = props
-  const baseClassNameSettings: string = 'font-semibold'
+  const baseClassNameSettings: string = 'font-bold'
 
   const sizeClassNameSettings: Record<string, string> = {
     'small': icon ? 'pa-2' : 'py-2 px-4',
@@ -28,8 +28,8 @@ const StyledButton = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
   }
 
   const borderClassNameSettings: Record<ButtonVariant, string> = {
-    'primary': (outlined) ? 'border border-blue-500' : '',
-    'secondary': (outlined) ? 'border border-gray-500 hover:border-gray-800' : ''
+    'primary': (outlined) ? 'border-2 border-blue-500' : '',
+    'secondary': (outlined) ? 'border-2 border-gray-200 hover:border-gray-800' : ''
   }
 
   const backgroundClassNameSettings: Record<ButtonVariant, string> = {
@@ -46,7 +46,7 @@ const StyledButton = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     backgroundClassNameSettings[variant ?? 'primary'],
     textClassNameSettings[variant ?? 'primary'],
     roundedClassNameSettings,
-    className
+    className,
   ].join(' ').replace(/\s+/g, ' ').trim()
 
   return (
