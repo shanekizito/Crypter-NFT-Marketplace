@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import StyledButton from '../styled-button/StyledButton';
 import { IconContext } from 'react-icons';
-import { MdChevronRight, MdChevronLeft } from 'react-icons/md';
+import { MdChevronRight, MdChevronLeft, MdCropSquare } from 'react-icons/md';
 import { useTransition, animated, config } from 'react-spring';
 import { useSwipeable } from 'react-swipeable';
 import TextTransition, { presets } from 'react-text-transition';
@@ -12,7 +12,7 @@ const items: Record<string, any>[] = [
     title: 'Marco carrillo®',
     image: 'https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1024&h=1280&q=80',
     creator: {
-      image: 'https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1024&h=1280&q=80',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
       name: 'Enrico Cole',
     },
     bid: 1.00,
@@ -22,9 +22,9 @@ const items: Record<string, any>[] = [
   {
     id: 1,
     title: 'the creator network®',
-    image: 'https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1024&h=1280&q=80',
+    image: 'https://images.unsplash.com/photo-1638913971789-667874197280?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
     creator: {
-      image: 'https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1024&h=1280&q=80',
+      image: 'https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2199&q=80',
       name: 'Ioanna Giannikopolous',
     },
     instantPrice: 6,
@@ -46,6 +46,7 @@ const ListingsSlider: React.FC = (props) => {
 
   const handlers = useSwipeable({
     preventDefaultTouchmoveEvent: true,
+    trackMouse: true,
     onSwipedLeft: () => {
       if (activeIndex !== items.length - 1) {
         setActiveIndex(activeIndex + 1)
@@ -71,7 +72,7 @@ const ListingsSlider: React.FC = (props) => {
                   ...style,
                   backgroundImage: `url(${image})`
                 }}
-                className="h-full w-full rounded-xl absolute object-cover bg-cover bg-center bg-no-repeat will-change-auto"
+                className="h-full w-full rounded-xl absolute object-cover bg-cover bg-center bg-no-repeat will-change-auto cursor-pointer active:cursor-grabbing"
                 { ...handlers }
               />
             )
@@ -98,11 +99,11 @@ const ListingsSlider: React.FC = (props) => {
             </div>
           </div>
           <div className="flex flex-row items-center">
-            <img
-              src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1024&h=1280&q=80"
-              alt=""
-              className="w-12 h-12 rounded-full object-cover mr-2"
-            />
+            <div className="w-12 h-12 rounded-full bg-green-500 mr-2 flex items-center justify-center text-white">
+              <IconContext.Provider value={{ size: "1.5em" }}>
+                <MdCropSquare />
+              </IconContext.Provider>
+            </div>
             <div className="space-y-0.2">
               <p className="text-gray-500 text-xs">Instant Price</p>
               <p className="text-gray-800 font-semibold">{ Number(items[activeIndex].instantPrice).toFixed(2) } ETH</p>
