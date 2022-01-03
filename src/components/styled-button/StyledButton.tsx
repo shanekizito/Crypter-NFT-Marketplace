@@ -14,7 +14,7 @@ interface ButtonProps extends JSXButtonProps {
 
 const StyledButton = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const { variant, size, rounded, outlined, icon, className, ...other } = props
-  const baseClassNameSettings: string = 'font-bold'
+  const baseClassNameSettings: string = 'font-bold disabled:opacity-25 disabled:pointer-events-none'
 
   const sizeClassNameSettings: Record<string, string> = {
     'small': icon ? 'pa-2' : 'py-2 px-4',
