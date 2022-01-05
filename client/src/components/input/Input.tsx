@@ -15,7 +15,7 @@ const Input: React.FC<InputProps> = (props) => {
   } = props
 
   const inputAdornmentClassNameSettings: string = props.InputAdornment ? 'pr-7' : ''
-  const inputResetClassNameSettings: string = 'outline-0 hover:outline-0 focus:outline-0'
+  const inputResetClassNameSettings: string = 'outline-0 hover:outline-0 focus:outline-none focus:border-0'
 
   const inputConfiguredClassName: string = [
     inputAdornmentClassNameSettings,
