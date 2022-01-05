@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import StyledButton from '../styled-button/StyledButton';
 import { IconContext } from 'react-icons';
 import { MdChevronRight, MdChevronLeft, MdCropSquare } from 'react-icons/md';
-import { useTransition, animated, config } from 'react-spring';
+import { useTransition, animated } from 'react-spring';
 import { useSwipeable } from 'react-swipeable';
 import TextTransition, { presets } from 'react-text-transition';
 
